@@ -3,7 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const twilio = require('../lib/utils/twilio');
-jest.mock('../lib/utils/twilio.js')
+jest.mock('../lib/utils/twilio')
 
 
 jest.mock('twilio', () => () => ({
