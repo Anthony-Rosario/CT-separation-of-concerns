@@ -2,8 +2,15 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
-jest.mock('../lib/utils/twilio.js');
 const twilio = require('../lib/utils/twilio');
+jest.mock('../lib/utils/twilio.js')
+
+
+jest.mock('twilio', () => () => ({
+  messages: {
+    create: jest.fn(),
+  },
+}));
 
 describe('Place order routes', () => {
   beforeEach(() => {
