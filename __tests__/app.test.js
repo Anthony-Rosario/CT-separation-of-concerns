@@ -6,6 +6,12 @@ const twilio = require('../lib/utils/twilio');
 jest.mock('../lib/utils/twilio')
 
 
+jest.mock('twilio', () => () => ({
+  messages: {
+    create: jest.fn(),
+  },
+}));
+
 describe('Place order routes', () => {
   beforeEach(() => {
     return setup(pool);
